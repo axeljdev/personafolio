@@ -1,3 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Expose";
+  src: url("./assets/font/Expose-Regular.otf");
+}
+
+:root {
+  --title-font: "Expose";
+  --body-font: "Urbanist", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1b2129;
+  font-family: var(--body-font);
+}
+
+h1,
+h2,
+h3,
+a,
+button {
+  font-family: var(--title-font);
+}
+
+p {
+  font-family: var(--body-font);
+  font-weight: 600;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-lg {
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.814);
+}
+
+@layer components {
+  .transform-link {
+    transform: perspective(500px) rotateX(10deg) rotateY(-15deg) skewX(-10deg)
+      skewY(5deg);
+  }
+  .bg-home {
+    background-image: url("../src/assets/images/bg-home.svg");
+    background-size: cover;
+    background-position: center;
+  }
+}
