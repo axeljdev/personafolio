@@ -1,0 +1,16 @@
+Voir les commentaires
+
+En tant qu'utilisateur non enregistré, je veux pouvoir voir tous les commentaires sous chaque projet de portfolio afin de lire les avis et les retours des autres utilisateurs.
+
+
+Poster un commentaire
+
+En tant qu'utilisateur enregistré, je veux pouvoir poster un commentaire sous un projet de portfolio afin de partager mon avis ou poser une question.
+
+Modifier mon commentaire
+
+En tant qu'utilisateur enregistré, je veux pouvoir modifier mon propre commentaire afin de corriger des erreurs ou de mettre à jour mon avis.
+
+Supprimer mon commentaire
+
+En tant qu'utilisateur enregistré, je veux pouvoir supprimer mon propre commentaire afin de retirer mon avis ou ma question si je le souhaite.
