@@ -74,7 +74,7 @@ function Comment({ projectData }) {
   };
 
   return (
-    <section className="bg-primary-color mt-40 transform -skew-x-30">
+    <section className="bg-primary-color mt-12 transform ">
       <h3 className="text-white text-4xl -rotate-6 mb-2 p-8 text-shadow-title">
         COMMENTAIRES
       </h3>
@@ -88,7 +88,7 @@ function Comment({ projectData }) {
         <textarea
           name="comment"
           id="comment"
-          className="w-[90%] h-32 p-4 ml-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-color"
+          className="w-[90%] h-32 p-4 ml-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-color  transform-link"
           placeholder="Laissez votre commentaire ici..."
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}

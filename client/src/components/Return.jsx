@@ -6,7 +6,7 @@ function Return() {
       <img
         src="../src/assets/images/ArrowBack.svg"
         alt="Retour"
-        className="mt-10"
+        className="mt-10 animate__animated animate__tada"
       />
     </Link>
   );

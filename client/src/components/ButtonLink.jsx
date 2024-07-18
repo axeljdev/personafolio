@@ -17,7 +17,7 @@ function ButtonLink({ link }) {
   return (
     <a
       href={`${link}`}
-      className={`transform-link bg-white hover:bg-primary-color hover:text-white text-secondary-color text-4xl w-36 h-16 pt-2 mt-3 -rotate-5 text-center ${isClicked ? "animate__animated animate__hinge" : ""}`}
+      className={`transform-link bg-white hover:bg-primary-color z-10 hover:text-white text-secondary-color text-4xl w-36 h-16 pt-2 mt-3 -rotate-5 text-center animate__animated animate__bounceInRight ${isClicked ? "animate__animated animate__hinge" : ""}`}
       onClick={handleClick}
     >
       Voir
