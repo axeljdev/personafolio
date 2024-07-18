@@ -1,11 +1,16 @@
-import cross from '../assets/images/Cross.svg'
+import PropTypes from 'prop-types';
+import edit from '../assets/images/edit.svg';
 
-function ButtonUpdate() {
+function ButtonUpdate({ onEdit }) {
   return (
-    <button type="button" className='bg-white border-2 border-black'>
-        <img src={cross} alt="modifier" className="w-6"/>
+    <button type="button" className='bg-white border-2 border-black' onClick={onEdit}>
+      <img src={edit} alt="modifier" className="w-6" />
     </button>
-  )
+  );
 }
 
-export default ButtonUpdate
+ButtonUpdate.propTypes = {
+  onEdit: PropTypes.func.isRequired,
+};
+
+export default ButtonUpdate;

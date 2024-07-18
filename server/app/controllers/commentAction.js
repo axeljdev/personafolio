@@ -22,7 +22,30 @@ const addComment = async (req, res, next) => {
   }
 };
 
+const updateComment = async (req, res, next) => {
+  try {
+    const { text } = req.body;
+    const { id } = req.params;
+    const result = await tables.comment.update(id, { text });
+    res.status(200).json(result);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const deleteComment = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await tables.comment.delete(id);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   addComment,
   browseComments,
+  updateComment,
+  deleteComment,
 };

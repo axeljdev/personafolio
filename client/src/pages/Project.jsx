@@ -22,7 +22,7 @@ function Project() {
             {project.name}
           </h2>
         </header>
-        <p className="text-white pt-16 m-7 ">
+        <p className="text-white pt-16 m-7 text-shadow-lg">
           {project.description}
         </p>
         <footer className="flex gap-16">
@@ -34,7 +34,7 @@ function Project() {
         </footer>
         <img src={`/src/assets/images/projets/${project.img}`} alt="" className="mt-10 ml-[-2rem]"/>
       </article>
-        <Comment/>
+        <Comment projectData={project}/>
     </main>
   );
 }

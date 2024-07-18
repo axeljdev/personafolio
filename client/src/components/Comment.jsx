@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Form, useNavigate, useLoaderData } from "react-router-dom";
+import PropTypes from "prop-types"; // Import PropTypes
 import CommentBox from "./CommentBox";
 import ButtonComment from "./ButtonComment";
 
-function Comment() {
-  const [comment, setComment] = useState("");
+function Comment({ projectData }) {
+  const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
+  const [editingCommentId, setEditingCommentId] = useState(null);
   const navigate = useNavigate();
   const project = useLoaderData(); // Assuming project data is loaded using a loader
   const userId = 1; // Replace with actual user ID logic
@@ -26,40 +28,69 @@ function Comment() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/projects/${project.id}/comments`, {
-      method: "POST",
+    const url = editingCommentId
+      ? `${import.meta.env.VITE_API_URL}/api/comments/${editingCommentId}`
+      : `${import.meta.env.VITE_API_URL}/api/projects/${project.id}/comments`;
+    const method = editingCommentId ? "PUT" : "POST";
+
+    const response = await fetch(url, {
+      method,
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ text: comment, userId }),
+      body: JSON.stringify({ text: commentText, userId }),
     });
+
     if (response.ok) {
-      setComment("");
+      setCommentText("");
+      setEditingCommentId(null);
       navigate(0); // Refresh the page to show the new comment
     } else {
-      console.error("Failed to post comment");
+      console.error(`Failed to ${editingCommentId ? "update" : "post"} comment`);
     }
   };
 
+  const handleDelete = async (commentId) => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/comments/${commentId}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      setComments(comments.filter(comment => comment.id !== commentId));
+    } else {
+      console.error("Failed to delete comment");
+    }
+  };
+
+  const handleEdit = (comment) => {
+    setCommentText(comment.text);
+    setEditingCommentId(comment.id);
+  };
+
   return (
-    <Form onSubmit={handleSubmit}>
-      <section className="bg-primary-color mt-80 transform -skew-x-30">
-        <h3 className="text-white text-4xl -rotate-6 mb-2 p-8 text-shadow-title">
-          COMMENTAIRES
-        </h3>
-        <CommentBox comments={comments} />
+    <section className="bg-primary-color mt-40 transform -skew-x-30">
+      <h3 className="text-white text-4xl -rotate-6 mb-2 p-8 text-shadow-title">
+        COMMENTAIRES
+      </h3>
+      <Form onSubmit={handleSubmit}>
+        <CommentBox comments={comments} projectData={projectData} onDelete={handleDelete} onEdit={handleEdit} />
         <textarea
           name="comment"
           id="comment"
           className="w-[90%] h-32 p-4 ml-2 mt-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-color"
           placeholder="Laissez votre commentaire ici..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          value={commentText}
+          onChange={(e) => setCommentText(e.target.value)}
         />
         <ButtonComment />
-      </section>
-    </Form>
+      </Form>
+    </section>
   );
 }
+
+Comment.propTypes = {
+  projectData: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default Comment;

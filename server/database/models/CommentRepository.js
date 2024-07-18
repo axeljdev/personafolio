@@ -21,6 +21,23 @@ class CommentRepository extends AbstractRepository {
         );
         return { id: result.insertId, ...comment };
     }
+
+  async read(id) {
+    const [rows] = await this.database.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id]);
+    return rows[0];
+  }
+
+  async delete(id) {
+    await this.database.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
+  }
+
+  async update(id, comment) {
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} SET text = ? WHERE id = ?`,
+      [comment.text, id]
+    );
+    return result;
+  }
 }
 
 
