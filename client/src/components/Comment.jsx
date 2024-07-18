@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, useNavigate, useLoaderData } from "react-router-dom";
 import CommentBox from "./CommentBox";
 import ButtonComment from "./ButtonComment";
 
 function Comment() {
   const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
   const navigate = useNavigate();
   const project = useLoaderData(); // Assuming project data is loaded using a loader
   const userId = 1; // Replace with actual user ID logic
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/comments`);
+      if (response.ok) {
+        const data = await response.json();
+        setComments(data);
+      } else {
+        console.error("Failed to fetch comments");
+      }
+    };
+
+    fetchComments();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +47,7 @@ function Comment() {
         <h3 className="text-white text-4xl -rotate-6 mb-2 p-8 text-shadow-title">
           COMMENTAIRES
         </h3>
-        <CommentBox />
+        <CommentBox comments={comments} />
         <textarea
           name="comment"
           id="comment"
