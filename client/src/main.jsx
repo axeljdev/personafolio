@@ -5,6 +5,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import App from "./App";
 import Project from "./pages/Project";
+import fetchApi from "./services/fetchApi";
+
+const projectUrl = "/api/projects"
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/Project/:id",
         element: <Project />,
+        loader: ({ params }) => fetchApi(`${projectUrl}/${params.id}`)
       },
     ],
   },

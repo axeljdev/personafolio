@@ -6,9 +6,11 @@ const router = express.Router();
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const itemsRouter = require("./items/router");
+const projectRouter = require("./project/router");
+const commentRouter = require("./comment/router");
 
-router.use("/items", itemsRouter);
+router.use("/projects", projectRouter);
+router.use("/comments", commentRouter); // Assuming comments are related to projects
 
 /* ************************************************************************* */
 

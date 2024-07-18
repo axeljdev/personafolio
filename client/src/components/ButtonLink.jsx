@@ -1,13 +1,18 @@
 import 'animate.css';
+import PropTypes from 'prop-types';
 
-function ButtonLink() {
+function ButtonLink({link}) {
   return (
     <a
-      href="/" className="transform-link bg-white text-secondary-color p-12 text-4xl pb-4 -rotate-5 active:animate__animated active:animate__bounce"
+      href={`${link}`} className="transform-link bg-white text-secondary-color text-4xl w-36 h-16 pt-2 mt-3 -rotate-5 text-center"
     >
       Voir
     </a>
   )
 }
+
+ButtonLink.propTypes = {
+  link: PropTypes.string.isRequired,
+};
 
 export default ButtonLink
