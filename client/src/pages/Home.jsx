@@ -1,4 +1,4 @@
-
+import "animate.css";
 import Logo from "../assets/images/Logo.svg";
 import ButtonHome from "../components/ButtonHome";
 
@@ -6,7 +6,7 @@ function Home() {
   return (
     <main className="bg-home min-h-screen w-full overflow-hidden">
       <header>
-        <h1 className="relative text-white text-8xl -rotate-6 bg-secondary-color first-letter:text-primary-color mt-5 pb-5">
+        <h1 className="relative text-white text-8xl -rotate-6 bg-secondary-color first-letter:text-primary-color mt-5 pb-5 animate__animated animate__jackInTheBox">
           PORTFOLIO
         </h1>
       </header>
@@ -16,7 +16,7 @@ function Home() {
       <img
         src={Logo}
         alt="Logo"
-        className="absolute top-40 right-6 rotate-[10deg] w-32 mt-5"
+        className="absolute top-40 right-6 rotate-[10deg] w-32 mt-5 animate__animated animate__zoomInRight"
       />
       <p className="text-white text-5xl font-title font-normal bg-secondary-color pb-5 text-right -rotate-6 mt-8 text-shadow-title">
         Je suis DEVELOPPEUR

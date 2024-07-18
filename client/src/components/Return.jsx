@@ -1,8 +1,14 @@
+import { Link } from "react-router-dom";
+
 function Return() {
   return (
-    <button type="button">
-        <img src="../src/assets/images/ArrowBack.svg" alt="Retour"/>
-    </button>
+    <Link to="/">
+      <img
+        src="../src/assets/images/ArrowBack.svg"
+        alt="Retour"
+        className="mt-10"
+      />
+    </Link>
   );
 }
 

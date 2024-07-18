@@ -1,6 +1,5 @@
 const tables = require("../../database/tables");
 
-
 const browseComments = async (req, res, next) => {
   try {
     const comments = await tables.comment.readAll();
@@ -11,18 +10,18 @@ const browseComments = async (req, res, next) => {
 };
 
 const addComment = async (req, res, next) => {
-    try {
-        const { text, userId } = req.body;
-        const { id: projectId } = req.params;
-        const result = await tables.comment.create({ text, userId, projectId });
-        
-        res.status(201).json(result);
+  try {
+    const { text, userId } = req.body;
+    const { id: projectId } = req.params;
+    const result = await tables.comment.create({ text, userId, projectId });
+
+    res.status(201).json(result);
   } catch (err) {
     next(err);
   }
 };
 
-const updateComment = async (req, res, next) => {
+const editComment = async (req, res, next) => {
   try {
     const { text } = req.body;
     const { id } = req.params;
@@ -46,6 +45,6 @@ const deleteComment = async (req, res, next) => {
 module.exports = {
   addComment,
   browseComments,
-  updateComment,
+  editComment,
   deleteComment,
 };

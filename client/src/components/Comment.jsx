@@ -7,14 +7,16 @@ import ButtonComment from "./ButtonComment";
 function Comment({ projectData }) {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
-  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editingCommentId, setEditingCommentId] = useState("");
   const navigate = useNavigate();
   const project = useLoaderData(); // Assuming project data is loaded using a loader
   const userId = 1; // Replace with actual user ID logic
 
   useEffect(() => {
     const fetchComments = async () => {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/comments`);
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/comments`
+      );
       if (response.ok) {
         const data = await response.json();
         setComments(data);
@@ -46,16 +48,21 @@ function Comment({ projectData }) {
       setEditingCommentId(null);
       navigate(0); // Refresh the page to show the new comment
     } else {
-      console.error(`Failed to ${editingCommentId ? "update" : "post"} comment`);
+      console.error(
+        `Failed to ${editingCommentId ? "update" : "post"} comment`
+      );
     }
   };
 
   const handleDelete = async (commentId) => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/comments/${commentId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/comments/${commentId}`,
+      {
+        method: "DELETE",
+      }
+    );
     if (response.ok) {
-      setComments(comments.filter(comment => comment.id !== commentId));
+      setComments(comments.filter((comment) => comment.id !== commentId));
     } else {
       console.error("Failed to delete comment");
     }
@@ -72,7 +79,12 @@ function Comment({ projectData }) {
         COMMENTAIRES
       </h3>
       <Form onSubmit={handleSubmit}>
-        <CommentBox comments={comments} projectData={projectData} onDelete={handleDelete} onEdit={handleEdit} />
+        <CommentBox
+          comments={comments}
+          projectData={projectData}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
         <textarea
           name="comment"
           id="comment"

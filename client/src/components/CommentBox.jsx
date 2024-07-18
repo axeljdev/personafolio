@@ -9,10 +9,8 @@ function CommentBox({ comments, projectData, onDelete, onEdit }) {
       {comments
         .filter((comment) => comment.project_id === projectData.id)
         .map((comment) => (
-          <header key={comment.id}>
-            <ul
-              className="absolute right-16 bottom-[5.7rem] -rotate-[4deg] flex gap-1"
-            >
+          <header key={comment.id} className="relative mb-8">
+            <ul className="flex gap-1 absolute right-4 top-4">
               <li>
                 <ButtonUpdate onEdit={() => onEdit(comment)} />
               </li>
@@ -20,11 +18,11 @@ function CommentBox({ comments, projectData, onDelete, onEdit }) {
                 <ButtonDelete onDelete={() => onDelete(comment.id)} />
               </li>
             </ul>
-            <img src={dialogImg} alt="" className="mt-4"/>
-            <p className=" -rotate-[14deg] absolute bottom-[4.9rem] left-[4rem]">
+            <img src={dialogImg} alt="" className="mt-4" />
+            <p className="absolute bottom-20 left-16 -rotate-[14deg]">
               {comment.name}
             </p>
-            <p className=" text-white font-light absolute bottom-[2.5rem] left-[8rem]">
+            <p className="absolute bottom-10 left-40 text-white font-light">
               {comment.text}
             </p>
           </header>

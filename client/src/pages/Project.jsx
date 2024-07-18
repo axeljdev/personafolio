@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Logo from "../assets/images/Logo.svg";
 import ButtonLink from "../components/ButtonLink";
 import Comment from "../components/Comment";
+import Return from "../components/Return";
 
 function Project() {
   const project=useLoaderData()
@@ -11,12 +12,13 @@ function Project() {
       <h1 className="text-white text-8xl -rotate-12 bg-secondary-color first-letter:text-primary-color ">
         PROJET {project.id}
       </h1>
+      <Return/>
       <img
         src={Logo}
         alt="Logo"
         className="absolute top-16 right-5 rotate-[10deg] mt-5"
       />
-      <article className="bg-secondary-color -rotate-12 w-[25rem] pl-[1.5rem] mt-20 ">
+      <article className="bg-secondary-color -rotate-12 w-[25rem] pl-[1.5rem] ">
         <header>
           <h2 className="text-[3rem] text-white pl-12 absolute -top-9 z-10 text-shadow-title">
             {project.name}
