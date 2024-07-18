@@ -3,7 +3,7 @@ import dialogImg from "../assets/images/dialog.png";
 
 function CommentBox() {
   return (
-    <div className="relative">
+    <section className="relative">
       <img src={dialogImg} alt="" />
       <p className=" -rotate-[14deg] absolute bottom-[4.3rem] left-[4rem]">
         Joker
@@ -11,7 +11,7 @@ function CommentBox() {
       <p className=" text-white font-light absolute bottom-[2rem] left-[8rem]">
         Super projet !
       </p>
-    </div>
+    </section>
   );
 }
 
