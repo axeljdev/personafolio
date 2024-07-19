@@ -21,7 +21,7 @@ function Home() {
       <p className="text-white text-5xl font-title font-normal bg-secondary-color pb-5 text-right -rotate-6 mt-8 text-shadow-title animate__animated animate__fadeInRight">
         Je suis DEVELOPPEUR
       </p>
-      <article className="text-white font-body font-normal bg-secondary-color p-5 pl-10 -rotate-12 mt-16 mb-10 flex flex-col gap-10 items-center">
+      <article className="text-white font-body font-normal bg-secondary-color p-5 pl-10 -rotate-12 mt-[3.5rem] mb-10 flex flex-col gap-10 items-center">
         <p className="text-white font-body font-normal text-shadow-lg">
           J'ai fait un bootcamp à la Wild Code School, où j'ai appris le
           JavaScript, REACTJS, mais aussi NodeJS et bien d'autres choses encore.
