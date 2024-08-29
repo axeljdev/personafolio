@@ -15,6 +15,7 @@ export default {
     },
   },
   plugins: [
-    import('tailwindcss-animated')
+    // eslint-disable-next-line global-require
+    require('tailwindcss-animated')
   ],
 };
