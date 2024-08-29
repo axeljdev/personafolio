@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import fetchApi from "../services/fetchApi";
+import arrowNext from "../assets/images/ArrowNext.svg";
 
 function ArrowNext() {
   const { id } = useParams();
@@ -27,7 +28,7 @@ function ArrowNext() {
   return (
     <Link to={`/Project/${nextProjectId}`}>
       <img
-        src="../src/assets/images/ArrowNext.svg"
+        src={arrowNext}
         alt="Projet suivant"
         className=" ml-52 w-52 animate__animated animate__tada"
       />
